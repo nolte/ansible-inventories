@@ -2,6 +2,13 @@
 
 ## Managed Inventories
 
+```yaml
+---
+- git: git@github.com:nolte/ansible-inventories.git
+  version: v0.0.1.dev
+  dst: ext_debs/ansible-inventories/
+```
+
 ### Private Storage Box
 
 Folder: ``./storagebox``
