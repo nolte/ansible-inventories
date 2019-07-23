@@ -1,0 +1,7 @@
+---
+storage_box_minio_access_key: "{{ lookup('passwordstore', 'internet/project/mystoragebox/minio_access_key') }}"
+storage_box_minio_secret_key: "{{ lookup('passwordstore', 'internet/project/mystoragebox/minio_secret_key') }}"
+
+letsencrypt_email: "{{ lookup('passwordstore', 'internet/letsencrypt/account_mail') }}"
+storage_box_minio_data: /mnt/minio/data
+storage_box_certsbot_enabled: true
