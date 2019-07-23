@@ -5,7 +5,7 @@
 ```yaml
 ---
 - git: git@github.com:nolte/ansible-inventories.git
-  version: v0.0.1.dev
+  version: v0.0.1
   dst: ext_debs/ansible-inventories/
 ```
 
