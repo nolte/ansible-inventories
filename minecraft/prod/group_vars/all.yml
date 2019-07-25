@@ -1,0 +1,18 @@
+terraform_stats_base: /home/nolte/repos-ansible/minecraft-server-project-repos/minecraft-environment-state
+terraform_workspace: prod
+server_page: https://nolte.github.io/minecraft-gameserver
+restic_version: 0.9.5
+ansible_user: ansible
+ansible_become_method: sudo
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_file: '~/.ssh/ansible_id_ed25519'
+
+gdrive_refresh_token: "{{ lookup('passwordstore', 'internet/google.com/grive/refresh_token')}}"
+s3_access_key: "{{ lookup('passwordstore', 'internet/project/mystoragebox/users/backupuser/minio_access_key')}}"
+s3_secret_key: "{{ lookup('passwordstore', 'internet/project/mystoragebox/users/backupuser/minio_secret_key')}}"
+
+system_supporters:
+  - "nolte"
+  - "ansible"
+
+sshd_AllowUsers: "{{ system_supporters }}"
