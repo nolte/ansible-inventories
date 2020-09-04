@@ -1,0 +1,4 @@
+ntp_enabled: true
+ntp_timezone: Europe/Berlin
+ntp_manage_config: true
+#ntp_area: "south-america"

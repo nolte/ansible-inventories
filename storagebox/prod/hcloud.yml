@@ -1,2 +1,4 @@
 ---
 plugin: hcloud
+groups:
+  k3sStoragebox: inventory_hostname.startswith('storage-k3s')

@@ -19,3 +19,4 @@ system_supporters:
   - "ansible"
 
 sshd_AllowUsers: "{{ system_supporters }}"
+ansible_ssh_user: ansible

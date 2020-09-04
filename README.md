@@ -18,6 +18,13 @@ export HCLOUD_TOKEN=$(pass internet/hetzner.com/projects/personal_storage/token)
     export ANSIBLE_INVENTORY=$(pwd)/storagebox/prod/
 ```
 
+### k3s Playground
+
+```bash
+export HCLOUD_TOKEN=$(pass internet/hetzner.com/projects/k3s/terraform-token) && \
+    export ANSIBLE_INVENTORY=$(pwd)/k3s/dev
+```
+
 ### Minecraft
 
 Folder: ``./minecraft``
@@ -34,6 +41,12 @@ virtualenv -p python3 ~/venvs/ansible-vagrant
 source ~/venvs/ansible-vagrant/bin/activate
 pip install -r requirements.txt
 pre-commit install
+```
+
+### Testing Connection 
+
+```bash
+ansible all -m ping
 ```
 
 ### Releasing
