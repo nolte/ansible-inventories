@@ -1,4 +1,3 @@
-
 selinux_enabled: false
 audit_rules_enabled: false
 
