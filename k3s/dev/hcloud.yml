@@ -1,4 +1,0 @@
----
-plugin: hcloud
-groups:
-  k3s: inventory_hostname.startswith('k3s')
