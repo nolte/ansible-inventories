@@ -1,0 +1,4 @@
+---
+plugin: hcloud
+groups:
+  minecraftgameserver: inventory_hostname.startswith('mc')

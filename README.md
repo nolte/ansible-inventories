@@ -1,21 +1,17 @@
 # ansible-inventories
 
+Used at different locations, like some ArgoWorkflow`s, AWX Jobs or Local development
+
 ## Managed Inventories
 
-```yaml
----
-- git: git@github.com:nolte/ansible-inventories.git
-  version: v0.0.2.dev
-  dst: ext_debs/ansible-inventories/
-```
+The diffrent Inventories are located inside the `./src` subdirectory. More Informations about Ansible Inventiries at [docs.ansible.com](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#how-to-build-your-inventory)
 
-### Private Storage Box
+### Local
 
-Folder: ``./storagebox``
+Folder: ``./local``
 
 ```bash
-export HCLOUD_TOKEN=$(pass internet/hetzner.com/projects/personal_storage/token) && \
-    export ANSIBLE_INVENTORY=$(pwd)/storagebox/prod/
+export ANSIBLE_INVENTORY=$(pwd)/src/local/
 ```
 
 ### Minecraft
@@ -24,7 +20,7 @@ Folder: ``./minecraft``
 
 ```bash
 export HCLOUD_TOKEN=$(pass internet/hetzner.com/projects/minecraft/terraform-token) && \
-    export ANSIBLE_INVENTORY=$(pwd)/minecraft/prod/
+    export ANSIBLE_INVENTORY=$(pwd)/src/minecraft/prod/
 ```
 
 ## Development
@@ -36,16 +32,14 @@ pip install -r requirements.txt
 pre-commit install
 ```
 
-### Releasing
-
-Must be executed from the ``develop`` branch.
+### Testing Connection 
 
 ```bash
-pre-commit uninstall \
-    && bump2version --tag release --commit \
-    && git checkout master && git merge develop && git checkout develop \
-    && bump2version --no-tag patch --commit \
-    && git push origin master --tags \
-    && git push origin develop \
-    && pre-commit install
+ansible all -m ping
+```
+
+Testing a dedicated element, from the inventory.
+
+```bash
+ansible rpi2hifybarry -e ansible_user=pi -e ansible_ssh_user=pi -m ping
 ```

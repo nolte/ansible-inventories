@@ -1,0 +1,4 @@
+---
+plugin: hcloud
+groups:
+  k3sMinecraft: inventory_hostname.startswith('mc-k3s')
