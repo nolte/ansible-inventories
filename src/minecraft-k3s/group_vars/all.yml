@@ -1,0 +1,27 @@
+terraform_stats_base: /home/nolte/repos-ansible/minecraft-server-project-repos/minecraft-environment-state
+terraform_workspace: prod
+server_page: https://nolte.github.io/minecraft-gameserver
+restic_version: 0.9.5
+restic_s3_endpoint: https://static.119.158.216.95.clients.your-server.de
+ansible_user: ansible
+ansible_ssh_user: "ansible"
+ansible_become_method: sudo
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_file: '/home/nolte/.ssh/ansible_id_ed25519'
+
+system_supporters:
+  - "nolte"
+  - "ansible"
+
+sshd_AllowUsers: "{{ system_supporters }}"
+
+
+k3s_cluster_domain: sslip.io
+cluster_fqdn: "{{ ansible_eth1.ipv4.address | replace('.', '-')  }}.{{ k3s_cluster_domain }}"
+KUBECONFIG: /etc/rancher/k3s/k3s.yaml
+k3s_release_version: v1.17.0+k3s.1
+k3s_write_kubeconfig_mode: 644
+
+k3s_server_manifests_templates: "{{ lookup('fileglob', '{{ playbook_dir }}/../../src/maintenance/templates/manifests-initial/*.j2', wantlist=True) }}"
+minecraft_ops: nolte07,_BlueBeaver_, #e1e45a60-d375-4fea-a238-91323b5ec11d
+minecraft_whitelist: m4yl0n,sipsap90,nolte07,_BlueBeaver_, #e1e45a60-d375-4fea-a238-91323b5ec11d

@@ -1,0 +1,13 @@
+k3s_release_version: v1.23.4+k3s1
+
+k3s_become: true
+
+#k3s_cluster_domain: fritz.box
+k3s_cluster_domain: cluster.local
+
+firewalld_enabled: true
+firewalld_exist: true
+
+k3s_no_traefik: true
+k3s_no_servicelb: true
+k3s_no_local_storage: false

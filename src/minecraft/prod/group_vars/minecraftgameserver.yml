@@ -3,7 +3,7 @@ node_name: mc-minimal
 labels:
   sage: dev
   service: minecraft
-mc_version: 1.14.3
+mc_version: 1.14.4
 mc_accept_eula: true
 pluginset: "server"
 discord_bot_token: "{{ lookup('passwordstore', 'internet/project/minecraft/discord/bot-token' ,convert_data=False) |string}}"
@@ -11,6 +11,7 @@ mc_plugin_sets: []
 mc_plugins_file: "{{inventory_dir}}/../pluginlist.yml"
 plugin_config_dir: "{{ inventory_dir }}/../pluginconfigs"
 mc_rcon_password: "{{ lookup('passwordstore', 'internet/project/minecraft/rcon/password' ,convert_data=False) |string}}"
+mc_backup_restic_repository_password: dolphins
 minecraft_port_gameserver: 25565
 minecraft_max_memory: 1024M
 minecraft_initial_memory: 1024M
@@ -28,6 +29,20 @@ minecraft_whitelist:
   - Pandamixx
   - _superwolle_
 minecraft_hook_before_setup: "{{ playbook_dir }}/roles/server_init/tasks/main.yml"
+minecraft_restore_src: "s3"
+minecraft_restore_elements:
+  - "worlddata"
+#  - "plugins"
+
+# server backup configuration
+backup_dests:
+  - "s3"
+  - "local"
+backup_parts:
+  - "plugins"
+  - "worlddata"
+
+
 restic_active: true
 gdrive_path_bin: "/usr/local/bin/gdrive"
 backup_gdrive_parent_folder_id: "1jfHnOvCzP9vnQCY2bvOJ3eH9AUfTNrKn"

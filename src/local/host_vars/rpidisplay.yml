@@ -1,0 +1,5 @@
+ansible_host: 192.168.178.57
+
+k3s_agent:
+  node-label:
+    - "task=display"
